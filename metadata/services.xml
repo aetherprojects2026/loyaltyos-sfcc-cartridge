@@ -20,4 +20,17 @@
     <profile-id>loyaltyos.http.profile</profile-id>
     <credential-id>loyaltyos.http.ingest.cred</credential-id>
   </service>
+  <service-credential service-credential-id="loyaltyos.http.reversal.cred">
+    <!-- URL is overridden per-site in code from the loyaltyOSEndpoint site preference; this is a placeholder. -->
+    <url>https://api.tenant.example.com</url>
+    <user></user>
+  </service-credential>
+  <service service-id="loyaltyos.http.reversal">
+    <service-type>HTTP</service-type>
+    <enabled>true</enabled>
+    <log-name-prefix>loyaltyos</log-name-prefix>
+    <comm-log-enabled>false</comm-log-enabled>
+    <profile-id>loyaltyos.http.profile</profile-id>
+    <credential-id>loyaltyos.http.reversal.cred</credential-id>
+  </service>
 </services>

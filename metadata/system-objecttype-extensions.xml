@@ -41,11 +41,22 @@
           <value-definition><value>FAILED</value></value-definition>
         </value-definitions>
       </attribute-definition>
+      <attribute-definition attribute-id="loyaltyReversalStatus">
+        <display-name xml:lang="x-default">LoyaltyOS Reversal Export Status</display-name>
+        <type>enum-of-string</type>
+        <mandatory-flag>false</mandatory-flag>
+        <value-definitions>
+          <value-definition><value>NOT_EXPORTED</value></value-definition>
+          <value-definition><value>EXPORTED</value></value-definition>
+          <value-definition><value>FAILED</value></value-definition>
+        </value-definitions>
+      </attribute-definition>
     </custom-attribute-definitions>
     <group-definitions>
       <attribute-group group-id="LoyaltyOS">
         <display-name xml:lang="x-default">LoyaltyOS</display-name>
         <attribute attribute-id="loyaltyExportStatus"/>
+        <attribute attribute-id="loyaltyReversalStatus"/>
       </attribute-group>
     </group-definitions>
   </type-extension>
