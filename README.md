@@ -63,7 +63,7 @@ left as a documented TODO (package `metadata/` into the site-import structure, t
 ## Cancellations & refunds (extension)
 This reference covers order **accrual** export. For **cancel/refund**, add a status-change job/hook that
 POSTs to the platform reversal endpoints (void / proportional refund) keyed by `order_no` — see the
-platform-side spec `claude-code-connector-sfcc.md`.
+LoyaltyOS [developer docs](https://loyalty.marketing.aetherprojects.net/developer.html) for the reversal API.
 
 ## Switching to OAuth2 client credentials
 Instead of the API key, add a token service that fetches a client-credentials bearer token and set
