@@ -1,0 +1,14 @@
+{
+  "name": "loyaltyos-sfcc-cartridge",
+  "version": "0.1.0",
+  "description": "LoyaltyOS integration cartridge (int_loyaltyos) for Salesforce B2C Commerce (SFCC / SFRA).",
+  "license": "MIT",
+  "scripts": {
+    "watch": "echo \"Use the Prophet / SFCC VS Code extension with dw.json to upload & watch cartridges\"",
+    "zip": "echo \"TODO: package int_loyaltyos into build/<code-version>/ and zip for sfcc-ci code:deploy\"",
+    "deploy": "echo \"CI handles deploy — see .github/workflows/deploy.yml (sfcc-ci)\""
+  },
+  "devDependencies": {
+    "sfcc-ci": "^2.11.0"
+  }
+}

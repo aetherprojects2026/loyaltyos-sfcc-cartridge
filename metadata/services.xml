@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns="http://www.demandware.com/xml/impex/services/2014-09-26">
+  <service-credential service-credential-id="loyaltyos.http.ingest.cred">
+    <!-- URL is overridden per-site in code from the loyaltyOSEndpoint site preference; this is a placeholder. -->
+    <url>https://api.tenant.example.com</url>
+    <user></user>
+  </service-credential>
+  <service-profile service-profile-id="loyaltyos.http.profile">
+    <timeout-millis>15000</timeout-millis>
+    <rate-limit-enabled>false</rate-limit-enabled>
+    <cb-enabled>true</cb-enabled>
+    <cb-calls>10</cb-calls>
+    <cb-interval-millis>60000</cb-interval-millis>
+  </service-profile>
+  <service service-id="loyaltyos.http.ingest">
+    <service-type>HTTP</service-type>
+    <enabled>true</enabled>
+    <log-name-prefix>loyaltyos</log-name-prefix>
+    <comm-log-enabled>false</comm-log-enabled>
+    <profile-id>loyaltyos.http.profile</profile-id>
+    <credential-id>loyaltyos.http.ingest.cred</credential-id>
+  </service>
+</services>

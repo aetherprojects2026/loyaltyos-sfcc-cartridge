@@ -1,0 +1,5 @@
+{
+  "hooks": [
+    { "name": "dw.ocapi.shop.order.afterPOST", "script": "./scripts/hooks/orderHooks.js" }
+  ]
+}

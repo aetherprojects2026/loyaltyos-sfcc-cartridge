@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+  <type-extension type-id="SitePreferences">
+    <custom-attribute-definitions>
+      <attribute-definition attribute-id="loyaltyOSEnabled">
+        <display-name xml:lang="x-default">LoyaltyOS: Enabled</display-name>
+        <type>boolean</type>
+        <mandatory-flag>false</mandatory-flag>
+        <default-value>false</default-value>
+      </attribute-definition>
+      <attribute-definition attribute-id="loyaltyOSEndpoint">
+        <display-name xml:lang="x-default">LoyaltyOS: API Base URL</display-name>
+        <type>string</type>
+        <mandatory-flag>false</mandatory-flag>
+      </attribute-definition>
+      <attribute-definition attribute-id="loyaltyOSApiKey">
+        <display-name xml:lang="x-default">LoyaltyOS: API Key</display-name>
+        <type>password</type>
+        <mandatory-flag>false</mandatory-flag>
+      </attribute-definition>
+    </custom-attribute-definitions>
+    <group-definitions>
+      <attribute-group group-id="LoyaltyOS">
+        <display-name xml:lang="x-default">LoyaltyOS</display-name>
+        <attribute attribute-id="loyaltyOSEnabled"/>
+        <attribute attribute-id="loyaltyOSEndpoint"/>
+        <attribute attribute-id="loyaltyOSApiKey"/>
+      </attribute-group>
+    </group-definitions>
+  </type-extension>
+
+  <type-extension type-id="Order">
+    <custom-attribute-definitions>
+      <attribute-definition attribute-id="loyaltyExportStatus">
+        <display-name xml:lang="x-default">LoyaltyOS Export Status</display-name>
+        <type>enum-of-string</type>
+        <mandatory-flag>false</mandatory-flag>
+        <value-definitions>
+          <value-definition><value>NOT_EXPORTED</value></value-definition>
+          <value-definition><value>EXPORTED</value></value-definition>
+          <value-definition><value>FAILED</value></value-definition>
+        </value-definitions>
+      </attribute-definition>
+    </custom-attribute-definitions>
+    <group-definitions>
+      <attribute-group group-id="LoyaltyOS">
+        <display-name xml:lang="x-default">LoyaltyOS</display-name>
+        <attribute attribute-id="loyaltyExportStatus"/>
+      </attribute-group>
+    </group-definitions>
+  </type-extension>
+</metadata>

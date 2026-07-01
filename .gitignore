@@ -1,0 +1,23 @@
+# Local sandbox credentials — NEVER commit (copy dw.json.sample -> dw.json)
+dw.json
+
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Build / deploy artifacts
+build/
+dist/
+*.zip
+version.txt
+
+# Logs
+*.log
+
+# Editors / OS
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db

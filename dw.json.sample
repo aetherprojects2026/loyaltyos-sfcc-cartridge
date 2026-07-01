@@ -1,0 +1,7 @@
+{
+  "hostname": "your-sandbox.dx.commercecloud.salesforce.com",
+  "username": "your-bm-username",
+  "password": "your-bm-access-key-or-password",
+  "code-version": "version1",
+  "cartridge": ["int_loyaltyos"]
+}

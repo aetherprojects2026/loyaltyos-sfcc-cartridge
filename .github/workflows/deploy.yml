@@ -1,0 +1,52 @@
+# Deploy the int_loyaltyos cartridge to an SFCC instance via sfcc-ci.
+# STARTER STUB — review before enabling. Requires an API client (Account Manager) with WebDAV/OCAPI
+# permissions and these repo secrets: SFCC_CLIENT_ID, SFCC_CLIENT_SECRET, SFCC_INSTANCE (hostname).
+name: Deploy cartridge (SFCC)
+
+on:
+  workflow_dispatch:
+    inputs:
+      codeVersion:
+        description: "Target code version name"
+        required: true
+        default: "v_ci"
+  push:
+    tags: [ "v*" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install sfcc-ci
+        run: npm install -g sfcc-ci
+
+      - name: Package code version
+        run: |
+          CODE_VERSION="${{ github.event.inputs.codeVersion || 'v_ci' }}"
+          mkdir -p "build/$CODE_VERSION"
+          cp -r int_loyaltyos "build/$CODE_VERSION/"
+          (cd build && zip -r "$CODE_VERSION.zip" "$CODE_VERSION")
+
+      - name: Authenticate (client credentials)
+        run: sfcc-ci client:auth "$SFCC_CLIENT_ID" "$SFCC_CLIENT_SECRET"
+        env:
+          SFCC_CLIENT_ID: ${{ secrets.SFCC_CLIENT_ID }}
+          SFCC_CLIENT_SECRET: ${{ secrets.SFCC_CLIENT_SECRET }}
+
+      - name: Deploy & activate code version
+        run: |
+          CODE_VERSION="${{ github.event.inputs.codeVersion || 'v_ci' }}"
+          sfcc-ci code:deploy "build/$CODE_VERSION.zip" -i "$SFCC_INSTANCE"
+          sfcc-ci code:activate "$CODE_VERSION" -i "$SFCC_INSTANCE"
+        env:
+          SFCC_INSTANCE: ${{ secrets.SFCC_INSTANCE }}
+
+      # TODO: import metadata (site prefs, custom attrs, services) via:
+      #   sfcc-ci instance:import <site-import.zip> -i "$SFCC_INSTANCE"
+      # Package metadata/ into the SFCC site-import structure first.

@@ -1,0 +1,25 @@
+{
+  "step-types": {
+    "script-module-step": [
+      {
+        "@type-id": "custom.LoyaltyOS.ExportOrders",
+        "description": "Export orders to the LoyaltyOS Ingestion API.",
+        "module": "int_loyaltyos/cartridge/scripts/jobs/ExportOrders.js",
+        "function": "run",
+        "transactional": "false",
+        "timeout-in-seconds": "900",
+        "parameters": {
+          "parameter": [
+            { "@name": "LookbackHours", "@type": "long", "@required": "false", "description": "How far back to scan for un-exported orders. Default 72." }
+          ]
+        },
+        "status-codes": {
+          "status": [
+            { "@code": "OK", "description": "Completed." },
+            { "@code": "ERROR", "description": "Failed." }
+          ]
+        }
+      }
+    ]
+  }
+}
